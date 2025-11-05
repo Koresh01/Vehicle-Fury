@@ -656,6 +656,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 60b32d0c7c31f9b4baf160decdc67c1d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1531019540}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 60b32d0c7c31f9b4baf160decdc67c1d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1531019541}
   m_SourcePrefab: {fileID: 100100000, guid: 60b32d0c7c31f9b4baf160decdc67c1d, type: 3}
 --- !u!1 &1531019539 stripped
 GameObject:
@@ -687,6 +690,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.92, z: 0}
+--- !u!114 &1531019541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531019539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5126792b3ebfde34eba7160e96319e90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {x: 0, y: 0}
+  lookDelta: {x: 0, y: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -694,7 +711,7 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 1307240142}
   - {fileID: 410087041}
+  - {fileID: 1531019538}
   - {fileID: 433733707}
   - {fileID: 392814464}
   - {fileID: 832575519}
-  - {fileID: 1531019538}
