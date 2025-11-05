@@ -24,7 +24,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     ""name"": ""InputActions"",
     ""maps"": [
         {
-            ""name"": ""Character Map"",
+            ""name"": ""OnFoot Map"",
             ""id"": ""08fec954-396b-4c0b-9c00-9460add5bf30"",
             ""actions"": [
                 {
@@ -49,6 +49,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""3f29a118-e4e7-45bb-9aba-8faeeca0d590"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""d1bb508f-b9a8-4d4b-ab67-401b98b96575"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -132,30 +141,130 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cae0da34-8ec2-4c46-a6c4-bc1221283afe"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
         {
             ""name"": ""Car Map"",
             ""id"": ""1497f72c-3c88-485e-8dc8-cd0977d52890"",
-            ""actions"": [],
-            ""bindings"": []
+            ""actions"": [
+                {
+                    ""name"": ""Steering"",
+                    ""type"": ""Value"",
+                    ""id"": ""44ed5397-0752-4145-8cb6-5fa3995c134a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Throttle"",
+                    ""type"": ""Value"",
+                    ""id"": ""4a6e5af3-3989-45fa-9575-60454b156ec4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""82551bfb-d22e-450d-8f55-af8aca379405"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steering"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""388fd261-6ba3-4be3-b5f8-f477d0f2a5fd"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steering"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""5eeda813-d871-4a16-b5f1-eaf16949244b"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steering"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""39ad17d3-e66b-4a53-a28d-9dcb418b1d2a"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""403a8592-2b4e-4c34-9c11-80a43effbc31"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""3974e380-1b38-48b7-98e9-dab144446ead"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // Character Map
-        m_CharacterMap = asset.FindActionMap("Character Map", throwIfNotFound: true);
-        m_CharacterMap_Move = m_CharacterMap.FindAction("Move", throwIfNotFound: true);
-        m_CharacterMap_Look = m_CharacterMap.FindAction("Look", throwIfNotFound: true);
-        m_CharacterMap_Jump = m_CharacterMap.FindAction("Jump", throwIfNotFound: true);
+        // OnFoot Map
+        m_OnFootMap = asset.FindActionMap("OnFoot Map", throwIfNotFound: true);
+        m_OnFootMap_Move = m_OnFootMap.FindAction("Move", throwIfNotFound: true);
+        m_OnFootMap_Look = m_OnFootMap.FindAction("Look", throwIfNotFound: true);
+        m_OnFootMap_Jump = m_OnFootMap.FindAction("Jump", throwIfNotFound: true);
+        m_OnFootMap_Interact = m_OnFootMap.FindAction("Interact", throwIfNotFound: true);
         // Car Map
         m_CarMap = asset.FindActionMap("Car Map", throwIfNotFound: true);
+        m_CarMap_Steering = m_CarMap.FindAction("Steering", throwIfNotFound: true);
+        m_CarMap_Throttle = m_CarMap.FindAction("Throttle", throwIfNotFound: true);
     }
 
     ~@InputActions()
     {
-        UnityEngine.Debug.Assert(!m_CharacterMap.enabled, "This will cause a leak and performance issues, InputActions.CharacterMap.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_OnFootMap.enabled, "This will cause a leak and performance issues, InputActions.OnFootMap.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_CarMap.enabled, "This will cause a leak and performance issues, InputActions.CarMap.Disable() has not been called.");
     }
 
@@ -215,28 +324,30 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Character Map
-    private readonly InputActionMap m_CharacterMap;
-    private List<ICharacterMapActions> m_CharacterMapActionsCallbackInterfaces = new List<ICharacterMapActions>();
-    private readonly InputAction m_CharacterMap_Move;
-    private readonly InputAction m_CharacterMap_Look;
-    private readonly InputAction m_CharacterMap_Jump;
-    public struct CharacterMapActions
+    // OnFoot Map
+    private readonly InputActionMap m_OnFootMap;
+    private List<IOnFootMapActions> m_OnFootMapActionsCallbackInterfaces = new List<IOnFootMapActions>();
+    private readonly InputAction m_OnFootMap_Move;
+    private readonly InputAction m_OnFootMap_Look;
+    private readonly InputAction m_OnFootMap_Jump;
+    private readonly InputAction m_OnFootMap_Interact;
+    public struct OnFootMapActions
     {
         private @InputActions m_Wrapper;
-        public CharacterMapActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_CharacterMap_Move;
-        public InputAction @Look => m_Wrapper.m_CharacterMap_Look;
-        public InputAction @Jump => m_Wrapper.m_CharacterMap_Jump;
-        public InputActionMap Get() { return m_Wrapper.m_CharacterMap; }
+        public OnFootMapActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_OnFootMap_Move;
+        public InputAction @Look => m_Wrapper.m_OnFootMap_Look;
+        public InputAction @Jump => m_Wrapper.m_OnFootMap_Jump;
+        public InputAction @Interact => m_Wrapper.m_OnFootMap_Interact;
+        public InputActionMap Get() { return m_Wrapper.m_OnFootMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CharacterMapActions set) { return set.Get(); }
-        public void AddCallbacks(ICharacterMapActions instance)
+        public static implicit operator InputActionMap(OnFootMapActions set) { return set.Get(); }
+        public void AddCallbacks(IOnFootMapActions instance)
         {
-            if (instance == null || m_Wrapper.m_CharacterMapActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_CharacterMapActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_OnFootMapActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_OnFootMapActionsCallbackInterfaces.Add(instance);
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
@@ -246,9 +357,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
-        private void UnregisterCallbacks(ICharacterMapActions instance)
+        private void UnregisterCallbacks(IOnFootMapActions instance)
         {
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
@@ -259,31 +373,38 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
-        public void RemoveCallbacks(ICharacterMapActions instance)
+        public void RemoveCallbacks(IOnFootMapActions instance)
         {
-            if (m_Wrapper.m_CharacterMapActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_OnFootMapActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(ICharacterMapActions instance)
+        public void SetCallbacks(IOnFootMapActions instance)
         {
-            foreach (var item in m_Wrapper.m_CharacterMapActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_OnFootMapActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_CharacterMapActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_OnFootMapActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public CharacterMapActions @CharacterMap => new CharacterMapActions(this);
+    public OnFootMapActions @OnFootMap => new OnFootMapActions(this);
 
     // Car Map
     private readonly InputActionMap m_CarMap;
     private List<ICarMapActions> m_CarMapActionsCallbackInterfaces = new List<ICarMapActions>();
+    private readonly InputAction m_CarMap_Steering;
+    private readonly InputAction m_CarMap_Throttle;
     public struct CarMapActions
     {
         private @InputActions m_Wrapper;
         public CarMapActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Steering => m_Wrapper.m_CarMap_Steering;
+        public InputAction @Throttle => m_Wrapper.m_CarMap_Throttle;
         public InputActionMap Get() { return m_Wrapper.m_CarMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -293,10 +414,22 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_CarMapActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_CarMapActionsCallbackInterfaces.Add(instance);
+            @Steering.started += instance.OnSteering;
+            @Steering.performed += instance.OnSteering;
+            @Steering.canceled += instance.OnSteering;
+            @Throttle.started += instance.OnThrottle;
+            @Throttle.performed += instance.OnThrottle;
+            @Throttle.canceled += instance.OnThrottle;
         }
 
         private void UnregisterCallbacks(ICarMapActions instance)
         {
+            @Steering.started -= instance.OnSteering;
+            @Steering.performed -= instance.OnSteering;
+            @Steering.canceled -= instance.OnSteering;
+            @Throttle.started -= instance.OnThrottle;
+            @Throttle.performed -= instance.OnThrottle;
+            @Throttle.canceled -= instance.OnThrottle;
         }
 
         public void RemoveCallbacks(ICarMapActions instance)
@@ -314,13 +447,16 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         }
     }
     public CarMapActions @CarMap => new CarMapActions(this);
-    public interface ICharacterMapActions
+    public interface IOnFootMapActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface ICarMapActions
     {
+        void OnSteering(InputAction.CallbackContext context);
+        void OnThrottle(InputAction.CallbackContext context);
     }
 }
