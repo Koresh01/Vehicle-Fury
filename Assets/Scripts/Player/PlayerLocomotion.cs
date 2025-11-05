@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Unity.Android.Gradle.Manifest;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Скрипт по перемещению персонажа.
@@ -16,8 +18,10 @@ public class PlayerLocomotion : MonoBehaviour
     private float horizontalRotation = 0f;
 
     [Header("Перемещение:")]
+    [SerializeField] bool isGrounded;
     [SerializeField] float rotationSpeed = 1f;
     [SerializeField] float moveSpeed = 6f;
+    [SerializeField] float gravity = 9.8f;
 
     private void Awake()
     {
@@ -28,6 +32,7 @@ public class PlayerLocomotion : MonoBehaviour
     {
         ApplyMovement();
         ApplyRotation();
+        ApplyGravity();
 
         UpdateCameraPos();
     }
@@ -88,5 +93,23 @@ public class PlayerLocomotion : MonoBehaviour
         // Обновляем позицию и поворот камеры
         camTransform.position = transform.position - newDir * cameraDistance;
         camTransform.rotation = Quaternion.LookRotation(newDir);
+    }
+
+    void ApplyGravity()
+    {
+        Vector3 movement = new Vector3();
+        isGrounded = characterController.isGrounded;
+        if (isGrounded)
+        {
+            movement.y = -0.5f;
+        }
+        else
+        {
+            // Используем отрицательное значение гравитации
+            movement.y -= gravity * Time.deltaTime;
+            movement.y = Mathf.Max(movement.y, -gravity * 2f);  // Ограничим максимальную скорость падения.
+        }
+        Debug.Log(movement.y);
+        characterController.Move(movement);
     }
 }
