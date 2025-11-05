@@ -7,10 +7,16 @@ public class PlayerLocomotion : MonoBehaviour
 {
     [SerializeField] OnFootMap onFootInput;
     CharacterController characterController;
+    
+    [Header("Камера:")]
+    [SerializeField] float mouseSens = 1f;
     [SerializeField] Transform camTransform;
+    [SerializeField] float cameraDistance = 1f;
+    private float verticalRotation = 0f;
+    private float horizontalRotation = 0f;
 
-
-    float moveSpeed = 4f;
+    [Header("Перемещение:")]
+    [SerializeField] float moveSpeed = 6f;
 
     private void Awake()
     {
@@ -20,6 +26,7 @@ public class PlayerLocomotion : MonoBehaviour
     private void Update()
     {
         ApplyMovement();
+        UpdateCameraPos();
     }
 
     void ApplyMovement()
@@ -35,5 +42,28 @@ public class PlayerLocomotion : MonoBehaviour
         
 
         characterController.Move(totalMovement);
+    }
+
+    void UpdateCameraPos()
+    {
+        float mouseX = onFootInput.lookDelta.x * Time.deltaTime * mouseSens;
+        float mouseY = -onFootInput.lookDelta.y * Time.deltaTime * mouseSens;
+
+        // Накопление горизонтального вращения
+        horizontalRotation += mouseX;
+
+        // Накопление и ограничение вертикального вращения
+        verticalRotation += mouseY;
+        verticalRotation = Mathf.Clamp(verticalRotation, 2f, 70f);
+
+        // Создаем итоговый поворот
+        Quaternion finalRotation = Quaternion.Euler(verticalRotation, horizontalRotation, 0f);
+
+        // Вычисляем новое направление камеры
+        Vector3 newDir = finalRotation * Vector3.forward;
+
+        // Обновляем позицию и поворот камеры
+        camTransform.position = transform.position - newDir * cameraDistance;
+        camTransform.rotation = Quaternion.LookRotation(newDir);
     }
 }
