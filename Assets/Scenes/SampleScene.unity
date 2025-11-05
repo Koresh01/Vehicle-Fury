@@ -805,6 +805,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683e0d76be9d8dd4cafc1850f78a341e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onFootInput: {fileID: 1958554759}
+  camTransform: {fileID: 330585546}
 --- !u!1001 &1677246703
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,8 +8,8 @@ public class OnFootMap : Map
 {
     InputActions inputActions;
 
-    [SerializeField] Vector2 movement;
-    [SerializeField] Vector2 lookDelta;
+    public Vector2 movement;
+    public Vector2 lookDelta;
 
     public override void InitializeInputActions(InputActions inputActions)
     {
