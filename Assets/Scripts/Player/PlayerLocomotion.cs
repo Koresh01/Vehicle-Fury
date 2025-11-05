@@ -16,6 +16,7 @@ public class PlayerLocomotion : MonoBehaviour
     private float horizontalRotation = 0f;
 
     [Header("Перемещение:")]
+    [SerializeField] float rotationSpeed = 1f;
     [SerializeField] float moveSpeed = 6f;
 
     private void Awake()
@@ -26,7 +27,29 @@ public class PlayerLocomotion : MonoBehaviour
     private void Update()
     {
         ApplyMovement();
+        ApplyRotation();
+
         UpdateCameraPos();
+    }
+
+    void ApplyRotation()
+    {
+        Vector3 totalMovement;
+
+        Vector3 forward = camTransform.rotation * Vector3.forward;
+        Vector3 horizontal = camTransform.rotation * Vector3.right;
+
+
+        totalMovement = (horizontal * onFootInput.movement.x + forward * onFootInput.movement.y) * moveSpeed * Time.deltaTime;
+        totalMovement.y = 0;
+
+        // Если пользователь не жмёт WASD, то вращать не нужно.
+        if (totalMovement == Vector3.zero) return;
+
+        Quaternion curRot = transform.rotation;
+        Quaternion targetRot = Quaternion.LookRotation(totalMovement);
+
+        transform.rotation = Quaternion.Slerp(curRot, targetRot, rotationSpeed * Time.deltaTime);
     }
 
     void ApplyMovement()
