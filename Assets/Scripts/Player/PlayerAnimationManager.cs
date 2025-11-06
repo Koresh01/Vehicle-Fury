@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Unity.Netcode;
+using UnityEngine;
 
 
 /// <summary>
 /// Управляет переменными аниматора.
 /// </summary>
-public class PlayerAnimationManager : MonoBehaviour
+public class PlayerAnimationManager : NetworkBehaviour
 {
     [SerializeField] OnFootMap onFootInput;
 
@@ -20,6 +21,7 @@ public class PlayerAnimationManager : MonoBehaviour
 
     private void Update()
     {
+        if (!IsOwner) return;
         UpdateAnimatorValues(onFootInput.movement.magnitude);
     }
 

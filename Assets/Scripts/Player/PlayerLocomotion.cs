@@ -1,11 +1,10 @@
-﻿using Unity.Android.Gradle.Manifest;
+﻿using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 /// <summary>
 /// Скрипт по перемещению персонажа.
 /// </summary>
-public class PlayerLocomotion : MonoBehaviour
+public class PlayerLocomotion : NetworkBehaviour
 {
     [SerializeField] OnFootMap onFootInput;
     CharacterController characterController;
@@ -30,6 +29,8 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void Update()
     {
+        if (!IsOwner) return;
+
         ApplyMovement();
         ApplyRotation();
         ApplyGravity();
@@ -109,7 +110,6 @@ public class PlayerLocomotion : MonoBehaviour
             movement.y -= gravity * Time.deltaTime;
             movement.y = Mathf.Max(movement.y, -gravity * 2f);  // Ограничим максимальную скорость падения.
         }
-        Debug.Log(movement.y);
         characterController.Move(movement);
     }
 }
