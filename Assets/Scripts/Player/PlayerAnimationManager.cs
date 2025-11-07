@@ -22,12 +22,13 @@ public class PlayerAnimationManager : NetworkBehaviour
     private void Update()
     {
         if (!IsOwner) return;
-        UpdateAnimatorValues(onFootInput.movement.magnitude);
+        UpdateAnimatorValuesServerRpc(onFootInput.movement.magnitude);
     }
 
 
-    public void UpdateAnimatorValues(float movement)
+    [ServerRpc]
+    public void UpdateAnimatorValuesServerRpc(float movement)
     {
-        animator.SetFloat(movement_HASH, movement, 0.1f, Time.deltaTime);
+        animator.SetFloat(movement_HASH, movement, 0.1f, Time.deltaTime);    // Значение movement, которое передаётся в animator изменяется только на севрере, а клиентУ оно передаётся, потому что мы на игрока повесили NetworkAnimator
     }
 }
