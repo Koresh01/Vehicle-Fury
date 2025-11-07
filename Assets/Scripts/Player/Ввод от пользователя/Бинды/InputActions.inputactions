@@ -56,6 +56,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ca766a93-241a-4d29-bcaa-e3c40b5552ab",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "ScaleVector2(x=15,y=15)",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b12e4bc9-3df5-4aec-9df5-41787568dd97",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -119,6 +130,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "7491e345-c4cf-4046-b978-698aeb274328",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
